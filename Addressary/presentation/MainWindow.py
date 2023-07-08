@@ -5,18 +5,18 @@ from PyQt6.QtCore import *
 from presentation.dialog.CreateDialog import CreateDialog
 from presentation.dialog.UpdateDialog import UpdateDialog
 from presentation.dialog.DeleteDialog import DeleteDialog
+
+from integration.CustomerDAOFile import CustomerDAOFile
+from integration.CustomerDAODatabase import CustomerDAODatabase
+from integration.DAOInterface import DAOInterface
+
    
 #Main Window  
 class MainWindow( QWidget):  
-    #singltone
-    def __new__(cls, CustomerDAOFile):
-        if not hasattr(cls, 'instance'):
-            cls.instance = super(MainWindow, cls).__new__(cls)
-        return cls.instance
     
-    def __init__(self, CustomerDAOFile):  
+    def __init__(self, DAOInterface):  
         super().__init__()  
-        self._CustomerDAOFile = CustomerDAOFile
+        self._DAOInterface = DAOInterface
         self.title = 'Addressary'  
         # Setting the Position  
         self.left = 0  
@@ -60,9 +60,9 @@ class MainWindow( QWidget):
         self.refreshtable()
         
     def refreshtable(self):
-        self.tableNew.setRowCount(len(self._CustomerDAOFile._customers_data))
+        self.tableNew.setRowCount(len(list(self._DAOInterface.getAllCustomers())))
         row = 0
-        for e in self._CustomerDAOFile._customers_data:
+        for e in self._DAOInterface.getAllCustomers():
             self.tableNew.setItem(row, 0, QTableWidgetItem(str(e['customerId'])))
             self.tableNew.setItem(row, 1, QTableWidgetItem(e['name']))
             self.tableNew.setItem(row, 2, QTableWidgetItem(e['surname']))
@@ -70,10 +70,4 @@ class MainWindow( QWidget):
             row += 1
             
     def closeEvent(self, event):
-        self._CustomerDAOFile.pickle_dump('customers.plk', self._CustomerDAOFile._customers_data)
-
-'''    def deletedialog(self):
-        text, ok = QInputDialog.getText(self, 'Deleting Customer', 'Customer ID')
-        if ok:
-            self.layout.setText(str(text))
-''' 
+        self._DAOInterface.close()

@@ -5,9 +5,12 @@ Created on 29. 6. 2023
 '''
 #from abc import ABC, abstractmethod
 import abc
-from core.CustomerId import CustomerId
 
 class DAOInterface(abc.ABC):
+
+    @abc.abstractmethod
+    def __init__(self):
+        pass
 
     @abc.abstractmethod
     def createCustomer(self, name, surname, address, commentary):
@@ -20,3 +23,16 @@ class DAOInterface(abc.ABC):
     @abc.abstractmethod
     def deleteCustomer(self, CustomerId):
         pass
+    
+    @abc.abstractmethod
+    def getAllCustomers(self):
+        pass
+    
+    @abc.abstractmethod
+    def findByCustomerId(self, customerId):
+        pass
+    
+    @abc.abstractmethod
+    def close(self):
+        pass
+    

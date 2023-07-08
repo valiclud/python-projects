@@ -55,24 +55,24 @@ class CustomerDAOFile(DAOInterface):
 
     def findByCustomerId(self, customerId):
         if all(len(d) == 0 for d in self._customers_data):
-            print('NO CUSTOMER FOUND FOR ID: ', customerId)
+            return None
         else:
             for l in self._customers_data:
                 for key in l:
                     if (key == 'customerId') :
                         if l[key] == customerId:
                             return l
-            print('NO CUSTOMER FOUND FOR ID: ', customerId)
+            return None
 
     def pickle_dump(self, filename, data):
         with open(filename, 'wb') as f:
             pickle.dump(data, f, protocol=pickle.HIGHEST_PROTOCOL)
-            
-def pickle_load(filename):
-    file = open(filename, 'rb')
-    data = pickle.load(file)
-    file.close()
-    return data
+    
+    def getAllCustomers(self):
+        return self._customers_data
+    
+    def close(self):
+        self._CustomerDAOFile.pickle_dump('customers.plk', self._CustomerDAOFile._customers_data)
 
 def pickle_loader(filename):
     with open(filename, "rb") as f:

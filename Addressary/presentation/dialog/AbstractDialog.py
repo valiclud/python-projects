@@ -4,7 +4,7 @@ Created on 5. 7. 2023
 @author: valic
 '''
 import abc
-from PyQt6.QtWidgets import QDialog, QLabel, QLineEdit, QPushButton 
+from PyQt6.QtWidgets import QDialog, QLabel, QLineEdit, QPushButton, QMessageBox 
 
 class AbstractDialog(abc.ABC):
     
@@ -61,6 +61,13 @@ class AbstractDialog(abc.ABC):
         cancelButton.show()
         cancelButton.clicked.connect(lambda:self.closeaction(d))
         return cancelButton
+    
+    def errordialog(self, errortext):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Icon.Critical)
+        msg.setWindowTitle("Error Window")
+        msg.setText(errortext)
+        msg.exec() 
         
     def closeaction(self, d): 
         d.close()

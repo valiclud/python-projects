@@ -24,6 +24,6 @@ class CreateDialog(AbstractDialog):
         d.exec()
         
     def saveaction(self, d, name, surname, address):
-        self.app_self._CustomerDAOFile.createCustomer(name.text(), surname.text(), address.text())
+        self.app_self._DAOInterface.createCustomer(name.text(), surname.text(), address.text())
         self.app_self.refreshtable()
         d.close()
