@@ -1,16 +1,11 @@
 import sys  
 
-from PyQt6.QtWidgets import *  
-from PyQt6.QtCore import *
+from PyQt6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QTableWidget, QTableWidgetItem
+from PyQt6.QtCore import Qt
 from presentation.dialog.CreateDialog import CreateDialog
 from presentation.dialog.UpdateDialog import UpdateDialog
 from presentation.dialog.DeleteDialog import DeleteDialog
 
-from integration.CustomerDAOFile import CustomerDAOFile
-from integration.CustomerDAODatabase import CustomerDAODatabase
-from integration.DAOInterface import DAOInterface
-
-   
 #Main Window  
 class MainWindow( QWidget):  
     

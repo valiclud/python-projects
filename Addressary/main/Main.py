@@ -6,7 +6,8 @@ Created on 3. 7. 2023
 
 import sys
 
-from PyQt6.QtWidgets import QApplication 
+from PyQt6.QtWidgets import QApplication
+#need to leave as line 26 
 from integration.CustomerDAOFile import CustomerDAOFile
 from integration.CustomerDAODatabase import CustomerDAODatabase
 from presentation.MainWindow import MainWindow
