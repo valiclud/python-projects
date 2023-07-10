@@ -47,12 +47,9 @@ class CustomerDAODatabase(DAOInterface):
     
     def findByCustomerId(self, customerId):
         mycursor = self.mydb.cursor()
-        print("hello ")
         sql = "SELECT id_addressary FROM Addressary WHERE id_addressary = '%d'" % (int(customerId))
         mycursor.execute(sql)
-        print("hello ")
         result = mycursor.fetchone()
-        print("hello ", result)
         return result
     
     def close(self):

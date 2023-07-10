@@ -57,11 +57,13 @@ class MainWindow( QWidget):
     def refreshtable(self):
         self.tableNew.setRowCount(len(list(self._DAOInterface.getAllCustomers())))
         row = 0
+        if (len(self._DAOInterface.getAllCustomers()) == 0):
+            return
         for e in self._DAOInterface.getAllCustomers():
-            self.tableNew.setItem(row, 0, QTableWidgetItem(str(e['customerId'])))
+            self.tableNew.setItem(row, 0, QTableWidgetItem(str(e['customerId'].customerId)))
             self.tableNew.setItem(row, 1, QTableWidgetItem(e['name']))
             self.tableNew.setItem(row, 2, QTableWidgetItem(e['surname']))
-            self.tableNew.setItem(row, 3, QTableWidgetItem(str(e['address'])))
+            self.tableNew.setItem(row, 3, QTableWidgetItem(e['address']))
             row += 1
             
     def closeEvent(self, event):

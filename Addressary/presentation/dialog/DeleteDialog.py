@@ -23,7 +23,7 @@ class DeleteDialog(AbstractDialog):
         if (self.app_self._DAOInterface.findByCustomerId(int(customerId.text())) == None):
             self.errordialog('CustomerId: %s does not exist' %customerId.text())
             return
-        self.app_self._DAOInterface.deleteCustomer(customerId.text())
+        self.app_self._DAOInterface.deleteCustomer(int(customerId.text()))
         self.app_self.refreshtable()
         d.close()
     

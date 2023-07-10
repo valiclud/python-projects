@@ -4,6 +4,7 @@ Created on 30. 6. 2023
 @author: valic
 '''
 import pickle
+from pathlib import Path
 
 from integration.DAOInterface import DAOInterface
 from core.CustomerId import CustomerId
@@ -11,42 +12,47 @@ from core.CustomerId import CustomerId
 class CustomerDAOFile(DAOInterface):
 
     def __init__(self):
-        self._customers_data = [{}]
-        for self._customers_data in pickle_loader('customers.plk'):
+        self._customers_data = []
+        self.script_location = Path(__file__).absolute().parent
+        self.file_location = self.script_location / 'customers.plk'
+        for self._customers_data in pickle_loader(self.file_location):
             pass
 
     def createCustomer(self, name, surname, address):
         newCustomerId = self.findLastCustomerId()
+        if(newCustomerId == None):
+            newCustomerId = CustomerId(0)
         dctr = {}   
-        dctr['customerId'] = newCustomerId
+        dctr['customerId'] = CustomerId(newCustomerId + CustomerId(1))
         dctr['name'] = name
         dctr['surname'] = surname
         dctr['address'] = address
         self._customers_data.append(dctr)
     
     def findLastCustomerId(self):
-        if all(len(d) == 0 for d in self._customers_data):
-            return CustomerId(1)
+        if (len(self._customers_data) == 0):
+            return None
         else:
-            max_value = 0
+            max_value = CustomerId(1)
             for l in self._customers_data:
                 for key in l:
                     if (key == 'customerId') :
                         if l[key] > max_value:
                             max_value = l[key]
-            return CustomerId(max_value) + CustomerId(1)
+            
+            return max_value
     
     def deleteCustomer(self, customerId):
         for l in self._customers_data :
             for key in l:
                 if (key == 'customerId') :
-                    if CustomerId(l[key]) == CustomerId(int(customerId)):
+                    if l[key] == CustomerId(customerId):
                         self._customers_data.remove(l)
         
     def updateCustomer(self, idCustomer, name, surname, address):
         customer = self.findByCustomerId(int(idCustomer))
         dctr = {}   
-        dctr['customerId'] = int(idCustomer)
+        dctr['customerId'] = CustomerId(int(idCustomer))
         dctr['name'] = name
         dctr['surname'] = surname
         dctr['address'] = address
@@ -54,13 +60,13 @@ class CustomerDAOFile(DAOInterface):
         self._customers_data.append(dctr)
 
     def findByCustomerId(self, customerId):
-        if all(len(d) == 0 for d in self._customers_data):
+        if (len(self._customers_data) == 0):
             return None
         else:
             for l in self._customers_data:
                 for key in l:
                     if (key == 'customerId') :
-                        if l[key] == customerId:
+                        if l[key] == CustomerId(customerId):
                             return l
             return None
 
@@ -72,7 +78,7 @@ class CustomerDAOFile(DAOInterface):
         return self._customers_data
     
     def close(self):
-        self._CustomerDAOFile.pickle_dump('customers.plk', self._CustomerDAOFile._customers_data)
+        self.pickle_dump(self.file_location, self._customers_data)
 
 def pickle_loader(filename):
     with open(filename, "rb") as f:

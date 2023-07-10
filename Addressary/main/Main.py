@@ -23,7 +23,7 @@ if __name__ == '__main__':
     base = QApplication(sys.argv)  
   
     #daoname = 'CustomerDAOFile'
-    daoname = 'CustomerDAODatabase'
+    daoname = 'CustomerDAOFile'
     if (daoname == 'CustomerDAODatabase'):
         dao = globals()['CustomerDAODatabase']
     else :
