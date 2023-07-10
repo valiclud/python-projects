@@ -8,11 +8,10 @@ import os
 
 from integration.CustomerDAOFile import CustomerDAOFile
 
-class TestCustomerDAOFile(unittest.TestCase):
+class TestCustomerCreateDAOFile(unittest.TestCase):
 
     
     def setUp(self):
-        print("Current working directory:", os.getcwd())
         dao = CustomerDAOFile()
         dao.createCustomer('a', 'b', 'c')
         dao.close()
@@ -23,11 +22,14 @@ class TestCustomerDAOFile(unittest.TestCase):
         dao.deleteCustomer(customerId.customerId)
         dao.close()
 
-    def testCustomerDAOFile(self):
+    def testCustomerCreateDAOFile(self):
         dao = CustomerDAOFile()
         customerIdLast = dao.findLastCustomerId()
         customer = dao.findByCustomerId(customerIdLast.customerId)
         assert customerIdLast == customer.get('customerId')
+        assert "a" == customer.get('name')
+        assert "b" == customer.get('surname')
+        assert "c" == customer.get('address')
         dao.close()
 
 if __name__ == "__main__":

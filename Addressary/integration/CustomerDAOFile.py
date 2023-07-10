@@ -46,13 +46,13 @@ class CustomerDAOFile(DAOInterface):
         for l in self._customers_data :
             for key in l:
                 if (key == 'customerId') :
-                    if l[key] == CustomerId(customerId):
+                    if l[key].customerId == customerId:
                         self._customers_data.remove(l)
         
     def updateCustomer(self, idCustomer, name, surname, address):
-        customer = self.findByCustomerId(int(idCustomer))
+        customer = self.findByCustomerId(idCustomer)
         dctr = {}   
-        dctr['customerId'] = CustomerId(int(idCustomer))
+        dctr['customerId'] = customer.get('customerId')
         dctr['name'] = name
         dctr['surname'] = surname
         dctr['address'] = address

@@ -24,8 +24,6 @@ class CreateDialog(AbstractDialog):
         d.exec()
         
     def saveaction(self, d, name, surname, address):
-        print("I AM HERE 0")
         self.app_self._DAOInterface.createCustomer(name.text(), surname.text(), address.text())
-        print("I AM HERE 1")
         self.app_self.refreshtable()
         d.close()

@@ -29,6 +29,6 @@ class UpdateDialog(AbstractDialog):
         if (self.app_self._DAOInterface.findByCustomerId(int(idLine.text())) == None):
             self.errordialog('CustomerId: %s does not exist' %idLine.text())
             return
-        self.app_self._DAOInterface.updateCustomer(idLine.text(), name.text(), surname.text(), address.text())
+        self.app_self._DAOInterface.updateCustomer(int(idLine.text()), name.text(), surname.text(), address.text())
         self.app_self.refreshtable()
         d.close()

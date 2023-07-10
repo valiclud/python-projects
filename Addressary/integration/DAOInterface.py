@@ -13,11 +13,11 @@ class DAOInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def createCustomer(self, name, surname, address, commentary):
+    def createCustomer(self, name, surname, address):
         pass
     
     @abc.abstractmethod
-    def updateCustomer(self, CustomerId, name, surname, address, commentary):
+    def updateCustomer(self, CustomerId, name, surname, address):
         pass
 
     @abc.abstractmethod
