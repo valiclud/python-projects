@@ -47,8 +47,14 @@ class CustomerDAODatabase(DAOInterface):
     
     def findByCustomerId(self, customerId):
         mycursor = self.mydb.cursor()
-        sql = "SELECT id_addressary FROM Addressary WHERE id_addressary = '%d'" % (int(customerId))
+        sql = "SELECT * FROM Addressary WHERE id_addressary = '%d'" % (int(customerId))
         mycursor.execute(sql)
+        result = mycursor.fetchone()
+        return result
+    
+    def findLastCustomerId(self):
+        mycursor = self.mydb.cursor()
+        mycursor.execute("SELECT LAST_INSERT_ID()")
         result = mycursor.fetchone()
         return result
     

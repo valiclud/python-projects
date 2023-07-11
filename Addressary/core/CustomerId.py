@@ -10,7 +10,6 @@ class CustomerId:
         
     def __hash__(self):
         hash_value = hash(self.customerId) * 7
-        print(f'Calling hash for {self.customerId}: {hash_value}')
         return hash_value
     
     def __eq__(self, other):
