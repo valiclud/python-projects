@@ -13,6 +13,7 @@ class TestCustomerDeleteDAOFile(unittest.TestCase):
     def setUp(self):
         self.dao = CustomerDAOFile()
         self.dao.createCustomer('a', 'b', 'c')
+        self.dao.close()
 
     def tearDown(self):
         self.dao.close()

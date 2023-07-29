@@ -22,7 +22,7 @@ if __name__ == '__main__':
     # creating the pyqt5 application      
     base = QApplication(sys.argv)  
   
-    #daoname = 'CustomerDAOFile'
+    #daoname = 'CustomerDAODatabase'
     daoname = 'CustomerDAOFile'
     if (daoname == 'CustomerDAODatabase'):
         dao = globals()['CustomerDAODatabase']
