@@ -34,8 +34,3 @@ if __name__ == '__main__':
     for _ in sorted_result_names :
         print(_)
         
-        
-        
-        
-        
- #somelist = [x[0] for x[0] in students if not x[0] in lowest_grades]        
