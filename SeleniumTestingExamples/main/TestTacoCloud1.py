@@ -61,7 +61,6 @@ class TestSearchProducts(unittest.TestCase):
         #mytable = driver.find_element(By.CLASS_NAME,"table-bordered")
         mytable = self.driver.find_element(By.TAG_NAME,"tbody")
         rows = mytable.find_elements(By.CSS_SELECTOR, 'tr')
-#        assert(rows[0].text == "Ludvík Valíček Balabánova 4 Praha ČR 18200 12345678 12/23\nLunch 2\nFlour Tortilla\nCorn Tortilla\nCarnitas")
         assert(rows[0].text == "{0}\n{1}\n{2}\n{3}\n{4}".format("Ludvík Valíček Balabánova 4 Praha ČR 18200 12345678 12/23",
                                                                 "Lunch 2", "Flour Tortilla", "Corn Tortilla", "Carnitas"))
         for row in rows:
