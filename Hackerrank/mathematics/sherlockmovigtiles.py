@@ -3,7 +3,7 @@ Created on 31. 7. 2023
 
 @author: valic
 '''
-import math
+import mathematics
 import os
 import random
 import re
@@ -24,7 +24,7 @@ def movingTiles(l, s1, s2, queries):
     # Write your code here
     results = []
     for q in queries:
-        t = (math.sqrt(2) * float(q) / math.sqrt(q)   - math.sqrt(2) * l) / float(s1-s2)
+        t = (mathematics.sqrt(2) * float(q) / mathematics.sqrt(q) - mathematics.sqrt(2) * l) / float(s1 - s2)
         results.append(round(abs(t), 4))
         #print("{:.4f}".format(round(abs(t), 4)), end=' ')
     return results
