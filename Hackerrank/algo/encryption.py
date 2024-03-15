@@ -4,7 +4,7 @@ Created on 1. 8. 2023
 @author: valic
 '''
 
-import math
+import mathematics
 import os
 import random
 import re
@@ -19,7 +19,7 @@ import sys
 
 def encryption(s):
     s = s.strip()
-    L = math.sqrt(len(s))
+    L = mathematics.sqrt(len(s))
     if (L.is_integer()):
         rows = int(L) 
     else :
