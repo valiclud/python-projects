@@ -7,7 +7,7 @@ from presentation.dialog.UpdateDialog import UpdateDialog
 from presentation.dialog.DeleteDialog import DeleteDialog
 
 #Main Window  
-class MainWindow( QWidget):  
+class MainWindow(QWidget):  
     
     def __init__(self, DAOInterface):  
         super().__init__()  
