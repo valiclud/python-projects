@@ -5,6 +5,7 @@ import os
 import random
 import re
 import sys
+from itertools import product
 
 #
 # Complete the 'solve' function below.
@@ -19,7 +20,9 @@ def solve(n, m):
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     alphaSubstring = alphabet[:m]
 
-    return alphaSubstring
+    combinations = product(alphaSubstring, [3])
+    print(','.join(map(str, combinations)))
+    return combinations
 
 if __name__ == '__main__':
     #fptr = open(os.environ['OUTPUT_PATH'], 'w')
