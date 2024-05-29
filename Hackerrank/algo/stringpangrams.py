@@ -3,7 +3,7 @@ Created on 2. 8. 2023
 
 @author: valic
 '''
-import mathematics
+import math
 import os
 import random
 import re

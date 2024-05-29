@@ -4,7 +4,7 @@ Created on 22. 7. 2023
 @author: valic
 '''
 
-import mathematics
+import math
 import os
 import random
 import re

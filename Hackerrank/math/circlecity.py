@@ -3,7 +3,7 @@ Created on 28. 7. 2023
 
 @author: valic
 '''
-import mathematics
+import math
 import os
 import random
 import re
@@ -20,12 +20,12 @@ from numpy.f2py.auxfuncs import isinteger
 #
 
 def solve1(d, k):
-    pointx = int(mathematics.sqrt(d))
+    pointx = int(math.sqrt(d))
     
     count = 0
     for x in range(0,pointx + 1, 1):
         for y in range(1, pointx + 1, 1):
-            fx = mathematics.sqrt(x * x + y * y)
+            fx = math.sqrt(x*x + y*y)
             if (fx == float(pointx)):
                 print(fx, " ---- ", x, " ---- ", y)
                 count +=1
@@ -36,13 +36,13 @@ def solve1(d, k):
         return "impossible"
     
 def solve(d, k):
-    pointx = int(mathematics.sqrt(d))
+    pointx = int(math.sqrt(d))
     
     count = 0
     for x in range(0,pointx + 1, 1):
         temp = d - x * x
         if (temp > 0) :
-            y = mathematics.sqrt(temp)
+            y = math.sqrt(temp)
             fx = (x*x + y*y)
             if (fx == d and y.is_integer()):
                 count +=1

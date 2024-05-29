@@ -3,7 +3,7 @@ Created on 22. 8. 2023
 
 @author: valic
 '''
-import mathematics
+import math
 import os
 import random
 import re
@@ -26,7 +26,7 @@ def solve(coordinates):
                 maximumy[0] = abs(c[1])
     
     return max(sum(maximumx), sum(maximumy),
-               mathematics.sqrt((mathematics.pow(max(maximumx), 2) + mathematics.pow(max(maximumy), 2))))
+               math.sqrt((math.pow(max(maximumx), 2) + math.pow(max(maximumy), 2))))
 
 if __name__ == '__main__':
     #fptr = open(os.environ['OUTPUT_PATH'], 'w')

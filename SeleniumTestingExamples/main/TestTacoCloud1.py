@@ -7,11 +7,16 @@ import unittest
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 
 class TestSearchProducts(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        self.service = Service()
+        self.options = webdriver.ChromeOptions()
+        self.driver = webdriver.Chrome(service=self.service, options=self.options)
+        
+        #self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(30)
         self.driver.get("http://localhost:8089/design")
         
