@@ -1,0 +1,11 @@
+/Addressary/core/__pycache__
+/Addressary/integration/__pycache__
+/Addressary/integration/*.plk
+/Addressary/presentation/__pycache__
+/Addressary/presentation/dialog/__pycache__
+/Addressary/test/__pycache__
+/Addressary/integration/customers.plk
+.idea
+.project
+.settings
+.pydevproject
