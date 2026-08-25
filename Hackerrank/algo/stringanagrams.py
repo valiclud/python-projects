@@ -3,7 +3,7 @@ Created on 2. 8. 2023
 
 @author: valic
 '''
-import math
+import mathematics
 import os
 import random
 import re
@@ -111,7 +111,7 @@ def sherlockAndAnagrams2(s):
             else :
                 count +=2
         else:
-            fakt = math.factorial(len(l) - 1)
+            fakt = mathematics.factorial(len(l) - 1)
             count += fakt
     return count
 
@@ -195,7 +195,7 @@ def sherlockAndAnagrams1(s):
             else :
                 count +=2
         else:
-            fakt = math.factorial(len(l) - 1)
+            fakt = mathematics.factorial(len(l) - 1)
             count += fakt
     return count
     
